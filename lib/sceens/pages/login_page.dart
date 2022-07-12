@@ -1,7 +1,9 @@
+import 'package:albumplug/sceens/pages/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final VoidCallback showRegisterPage;
+  const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -11,14 +13,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         body: SafeArea(
             child: Center(
                 child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.phone_android,
+              color: Colors.tealAccent,
+              Icons.music_note,
               size: 100,
             ),
             SizedBox(height: 75),
@@ -26,12 +29,16 @@ class _LoginPageState extends State<LoginPage> {
             //Hello again!
             Text(
               'Hello Again!',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+              style: TextStyle(
+                  color: Colors.teal,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36),
             ),
             SizedBox(height: 10),
             Text(
               'Welcome back you\'ve been missed!',
               style: TextStyle(
+                color: Colors.teal,
                 fontSize: 20,
               ),
             ),
@@ -39,16 +46,19 @@ class _LoginPageState extends State<LoginPage> {
 
             //email textfield
             Padding(
-              padding: const EdgeInsets.only(left: 20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
+                  color: Colors.teal[200],
+                  border: Border.all(color: Colors.teal),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'Email'),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: InputBorder.none, hintText: 'Email'),
+                  ),
                 ),
               ),
             ),
@@ -56,17 +66,20 @@ class _LoginPageState extends State<LoginPage> {
 
             //password textfield
             Padding(
-              padding: const EdgeInsets.only(left: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
+                  color: Colors.teal[200],
+                  border: Border.all(color: Colors.teal),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'Password'),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        border: InputBorder.none, hintText: 'Password'),
+                  ),
                 ),
               ),
             ),
@@ -80,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Container(
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple,
+                    color: Colors.teal,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Center(
@@ -103,17 +116,16 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Not a member? Register Here',
+                  'Not a member?',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
+                    color: Colors.teal,
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()));
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUp()));
                   },
                   child: Text(
                     ' Register here',
